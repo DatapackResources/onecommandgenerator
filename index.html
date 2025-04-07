@@ -24,7 +24,7 @@ function convert() {
   if (!input) return;
 
   // Step 1: split and escape quotes
-  const lines = input.split('\n').map(line => line.trim().replace(/"/g, '\\"')).filter(Boolean);
+  const lines = input.split('\n').map(line => line.trim().replace(/"/g, '\'')).filter(Boolean);
 
   // Step 2: build Framework 2 recursively
   function buildFramework2(index) {
