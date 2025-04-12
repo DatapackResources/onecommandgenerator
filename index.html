@@ -29,7 +29,7 @@ function convert() {
   // Step 2: build Framework 2 recursively
   function buildFramework2(index) {
     if (index >= lines.length) return ''; // base case: nothing
-    return `Passengers:[{id:\\"minecraft:falling_block\\",BlockState:{Name:\\"minecraft:chain_command_block\\",Properties:{facing:\\"up\\"}},Time:1,TileEntityData:{Command:\\"${lines[index]}\\"},Passengers:[{id:\\"minecraft:falling_block\\",BlockState:{Name:\\"air\\"},Time:599,${buildFramework2(index + 1)}}]}]`;
+    return `Passengers:[{id:\\"minecraft:falling_block\\",BlockState:{Name:\\"minecraft:chain_command_block\\",Properties:{facing:\\"up\\"}},Time:1,TileEntityData:{Command:\\"${lines[index]}\\"},Passengers:[{id:\\"minecraft:falling_block\\",BlockState:{Name:\\"sand\\"},Time:599,${buildFramework2(index + 1)}}]}]`;
   }
 
   let passengersSection = '';
@@ -38,7 +38,7 @@ function convert() {
   }
 
   // Step 3: Insert into Framework 1
-  const framework1 = `give @p enderman_spawn_egg[entity_data={id:"minecraft:falling_block",BlockState:{Name:"minecraft:command_block",Properties:{facing:"up"}},TileEntityData:{auto:1b,Command:"summon minecraft:falling_block ~ ~1 ~ {BlockState:{Name:\\\"minecraft:repeating_command_block\\\",Properties:{facing:\\\"up\\\"}},Time:1,TileEntityData:{Command:\\\"${lines[0]}\\\",auto:1b},Passengers:[{id:\\\"minecraft:falling_block\\\",BlockState:{Name:\\\"air\\\"},Time:599,${passengersSection}}]}"}}]`;
+  const framework1 = `give @p enderman_spawn_egg[entity_data={id:"minecraft:falling_block",BlockState:{Name:"minecraft:command_block",Properties:{facing:"up"}},TileEntityData:{auto:1b,Command:"summon minecraft:falling_block ~ ~1 ~ {BlockState:{Name:\\\"minecraft:repeating_command_block\\\",Properties:{facing:\\\"up\\\"}},Time:1,TileEntityData:{Command:\\\"${lines[0]}\\\",auto:1b},Passengers:[{id:\\\"minecraft:falling_block\\\",BlockState:{Name:\\\"sand\\\"},Time:599,${passengersSection}}]}"}}]`;
 
   document.getElementById('output').textContent = framework1;
 }
